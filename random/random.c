@@ -11,7 +11,7 @@ void usage(void)
 }
 void initial()
 {
-	srand(time(0));
+	srandom(time(0));
 }
 int generate_random(int a, int b)
 {
@@ -34,17 +34,16 @@ int main(int argc, char *argv[])
 	sscanf(argv[2],"%d", &a);
 	sscanf(argv[3],"%d", &b);
 
-	printf("a:%d,b:%d,c:%d\n", n, a, b);
+//	printf("a:%d,b:%d,c:%d\n", n, a, b);
 
-	srand((unsigned int)time(0));
 	// I don't know why the result seems the the same while running 
 	// several times, though I set the srand function.
 	// IT IS A TODO LIST.
-	printf("%lld\n", (long long)time(0));
-	printf("%u\n", (unsigned int)time(0));
+	// Fixed. Srand and rand are a couple, while srandom is whit random
+	initial();
+	//printf("%u\n", (unsigned int)time(0));
 	while(n--){
-		//printf("%d\n", generate_random(a, b));
-		printf("%ld\n", random());
+		printf("%d\n", generate_random(a, b));
 	}
 	return 0;
 }
